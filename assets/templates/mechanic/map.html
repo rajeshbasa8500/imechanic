@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Skydash Admin</title>
+  <!-- plugins:css -->
+  <meta charset="utf-8" />
+  <title>Distances btn two cities App</title>
+  <link href="Content/bootstrap.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <script src="https://kit.fontawesome.com/ab2155e76b.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link href="{% static 'main/css/App.css'%}" rel="stylesheet" />
+  <link href="{% static 'main/css/style.css'%}" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'admin/vendors/feather/feather.css'%}">
+  <link rel="stylesheet" href="{% static 'admin/vendors/ti-icons/css/themify-icons.css'%}">
+  <link rel="stylesheet" href="{% static 'admin/vendors/css/vendor.bundle.base.css'%}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="{% static 'admin/vendors/datatables.net-bs4/dataTables.bootstrap4.css'%}">
+  <link rel="stylesheet" href="{% static 'admin/vendors/ti-icons/css/themify-icons.css'%}">
+  <link rel="stylesheet" type="text/css" href="{% static 'admin/js/select.dataTables.min.css'%}">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{% static 'admin/css/vertical-layout-light/style.css'%}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{% static 'admin/images/favicon.png'%}" />
+</head>
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo mr-5" href="{% url 'index' %}">Mechanic</a>
+       </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>
+        </button>
+        
+        <ul class="navbar-nav navbar-nav-right">
+         
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+              <img src="https://img.icons8.com/ios/50/000000/settings--v1.png"/>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                
+              <a class="dropdown-item" href="{% url 'index' %}">
+                <i class="ti-power-off text-primary"></i>
+                Logout
+              </a>
+            </div>
+          </li>
+        </ul>
+         
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_settings-panel.html -->
+       
+      <div id="right-sidebar" class="settings-panel">
+        <i class="settings-close ti-close"></i>
+        <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
+          </li>
+        </ul>
+         
+      </div>
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'mechanic_dashboard' %}">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              data-toggle="collapse"
+              href="#ui-basic"
+              aria-expanded="false"
+              aria-controls="ui-basic"
+            >
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Machanic</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'mechanic_add_shop' %}"
+                    >Add Shop</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'mechanic_manage_shop' %}"
+                    >Manage Shop</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              data-toggle="collapse"
+              href="#form-elements"
+              aria-expanded="false"
+              aria-controls="form-elements"
+            >
+              <i class="icon-columns menu-icon"></i>
+              <span class="menu-title">My Booking</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="form-elements">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="{% url 'mechanic_pending_booking' %}"
+                    >Pending Booking of Remote User</a
+                  >
+                </li>
+               
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="{% url 'mechanic_confirmed_booking' %}"
+                    >Confirmed Booking</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'mechanic_my_feedback' %}">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">My Feedback</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+        <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper" >
+           
+          <div class="row" style="padding-left:30px;">
+            <h3 style="padding-left:300px;">See Here User Loction&Direction</h3>
+            <body>
+                <div class="">
+                    
+                    <div class="container-fluid" >
+                        <form class="form-horizontal">
+                                
+                            <label for="from" class="col-md-4 control-label"></label>
+                            <div class="col-md-4">
+                                <input type="text" id="from" value='{{b.latitude}} {{b.longitude}}'  placeholder="Destination" class="form-control">
+                            </div>
+
+                            <label for="from1" class="col-md-4 control-label"></label>
+                            <div class="col-md-4">
+                              <input type="hidden" id="from1" value='{{b.remote_address}}'  placeholder="Destination" class="form-control">
+                            </div>
+                            
+                            <label for="to" class="col-md-4 control-label"></label>
+                            <div class="col-md-4">
+                                <input type="text" id="to" value='{{c.mechanic_city}}' placeholder="Origin" class="form-control">
+                            </div>
+                          
+                        
+                         
+                        </form>
+                    <br>
+                    <div class="col-xs-offset-2 col-xs-10" style="padding-left:400px;">
+                        <button class="btn btn-info btn-lg" onclick="calcRoute();">See Direction</button>
+                    </div>
+                </div>
+                <br>
+                
+                        <div id="googleMap" >
+            
+                        </div>
+                        <div id="output">
+            
+                        </div>
+                        <div class="container-fluid">
+                            <center><td>
+                                <a href="{% url 'accept' book_id=b.booking_id %}"><button type="submit" class="btn btn-success btn-md">Accept</button></a>
+                                <button type="submit" class="btn btn-primary btn-md">Back</button>
+                            </td></center>
+                        
+                     
+                    </div>
+            
+                </div>
+            
+               
+               
+       
+      </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer" style="text-align: center ;padding-left:400px;">
+        
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2022.  <a href="http://www.codebook.in" target="_blank"All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Designed & Developed by<i class="ti-heart text-danger ml-1"></i></span>
+             </div>
+        </footer> 
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>   
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+ <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+ 
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_LuA5RP5wC-0XuTS41usajc9DY6FJpJU&libraries=places"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ <!-- Include all compiled plugins (below), or include individual files as needed -->
+ <script src="Scripts/jquery-3.1.1.min.js"></script>
+ <script src="{% static 'main/js/direction.js'%}"></script>
+ <!-- plugins:js -->
+ <script src="{% static 'admin/vendors/js/vendor.bundle.base.js'%}"></script>
+ <!-- endinject -->
+ <!-- Plugin js for this page -->
+ <script src="{% static 'admin/vendors/chart.js/Chart.min.js'%}"></script>
+ <script src="{% static 'admin/vendors/datatables.net/jquery.dataTables.js'%}"></script>
+ <script src="{% static 'admin/vendors/datatables.net-bs4/dataTables.bootstrap4.js'%}"></script>
+ <script src="{% static 'admin/js/dataTables.select.min.js'%}"></script>
+
+ <!-- End plugin js for this page -->
+ <!-- inject:js -->
+ <script src="{% static 'admin/js/off-canvas.js'%}"></script>
+ <script src="{% static 'admin/js/hoverable-collapse.js'%}"></script>
+ <script src="{% static 'admin/js/template.js'%}"></script>
+ <script src="{% static 'admin/js/settings.js'%}"></script>
+ <script src="{% static 'admin/js/todolist.js'%}"></script>
+ <!-- endinject -->
+ <!-- Custom js for this page-->
+ <script src="{% static 'admin/js/dashboard.js'%}"></script>
+ <script src="{% static 'admin/js/Chart.roundedBarCharts.js'%}"></script>
+ <!-- End custom js for this page-->
+</body>
+</html>

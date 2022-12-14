@@ -1,0 +1,18 @@
+/**
+ * @license
+ * Copyright 2019 Google LLC. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
+ */
+/* Set the size of the div element that contains the map */
+
+#container {
+  display:flex;
+  justify-content:center;
+  padding-left: 40%;
+  background-color: red;
+}
+#map{
+  height:80vh;
+  width:80vw;
+   
+}
